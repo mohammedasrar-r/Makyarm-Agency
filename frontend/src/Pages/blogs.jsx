@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -110,41 +110,57 @@ const BlogHeader = () => {
 
 // Blog Card Component
 
-const BlogCard = ({ post }) => (
-  <motion.div
-    className="bg-white rounded-xl overflow-hidden shadow-lg"
-    variants={fadeInUp}
-    whileHover="hover"
-    initial="rest"
-    animate="rest"
-    style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
-  >
-    <motion.div variants={cardHover}>
-      <div className="relative h-52 overflow-hidden">
-        <motion.img
-          src={post.imageUrl}
-          alt={post.title}
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        />
-      </div>
-      <div className="p-6">
-        <div className="flex items-center text-gray-500 text-sm mb-3">
-          <span>{post.date}</span>
-          <span className="mx-2">•</span>
-          <span>{post.readTime}</span>
-        </div>
-        <h3 className="text-xl font-bold mb-3" style={{ color: '#121212' }}>{post.title}</h3>
-        <p className="text-gray-600 mb-4">{post.content}</p> {/* Updated from excerpt to content */}
-        {/* <motion.button whileHover={{ scale: 1.05 }} className="flex items-center text-blue-500 font-medium" style={{ color: '#3AB4F2' }}>
-          Read More <ArrowRight className="ml-2 h-4 w-4" />
-        </motion.button> */}
-      </div>
-    </motion.div>
-  </motion.div>
-);
 
+const BlogCard = ({ post }) => {
+  const navigate = useNavigate();
+
+  // Format date
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+  return (
+    <motion.div
+      className="bg-white rounded-xl overflow-hidden shadow-lg"
+      variants={fadeInUp}
+      whileHover="hover"
+      initial="rest"
+      animate="rest"
+      style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
+    >
+      <motion.div variants={cardHover}>
+        <div className="relative h-52 overflow-hidden">
+          <motion.img
+            src={post.imageUrl}
+            alt={post.title}
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
+        <div className="p-6">
+          <div className="flex items-center text-gray-500 text-sm mb-3">
+            <span>{formattedDate}</span>
+            <span className="mx-2">•</span>
+            <span>{post.readTime}</span>
+          </div>
+          <h3 className="text-xl font-bold mb-3" style={{ color: '#121212' }}>{post.title}</h3>
+          <p className="text-gray-600 mb-4 line-clamp-3">{post.content}</p> {/* Optional truncation */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center text-blue-500 font-medium"
+            style={{ color: '#3AB4F2' }}
+            onClick={() => navigate(`/blog/${post._id}`)}
+          >
+            Read More <ArrowRight className="ml-2 h-4 w-4" />
+          </motion.button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 // Pagination Component
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {

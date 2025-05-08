@@ -208,7 +208,12 @@ const getAllBlogs = async(req,res)=>{
     }
 }
 // Get all users (admin only)
-
+const getBlog = async (req,res)=>{
+  const { id } = req.params;
+  const blog = await Blog.findById(id); // adjust according to your DB
+  if (!blog) return res.status(404).send('Not found');
+  res.json(blog);
+}
 module.exports = { 
     register,
     login, 
@@ -218,5 +223,6 @@ module.exports = {
     getAllSubmissions,
     updateTaskStatus,
     addBlog,
-    getAllBlogs
+    getAllBlogs,
+    getBlog
 };
