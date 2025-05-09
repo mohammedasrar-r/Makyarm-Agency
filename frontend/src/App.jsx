@@ -10,7 +10,7 @@ import Login from './Pages/Login.jsx'
 import AddBlog from './Pages/AddBlog.jsx';
 import BlogPostDetail from './Pages/BlogPostDetail.jsx'
 import ChatbotToggle from './components/ChatbotToggle.jsx';
-function App() {
+function App() { 
  
   return (
     <>
