@@ -181,7 +181,7 @@ const Hero = () => {
   <motion.div className="flex justify-center mb-6" variants={fadeInUp}>
   <div className="w-28 h-28 rounded-full bg-white  shadow-lg ring-1 ring-blue-300">
     <img 
-      src="/src/assets/Logo.jpeg" 
+      src="public/Logo.jpeg" 
       alt="MAKYARM Logo" 
       className="w-full h-full object-cover rounded-full"
     />
