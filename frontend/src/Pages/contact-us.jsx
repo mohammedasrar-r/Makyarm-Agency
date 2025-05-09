@@ -187,7 +187,7 @@ const ContactUsSection = () => {
     setIsSubmitting(true);
   
     try {
-      const response = await axios.post("http://localhost:3000/api/user/submit", formState);
+      const response = await axios.post("https://makyarmagenciespvt-backend.vercel.app/api/user/submit", formState);
       if (response.status === 200) {
         setIsSubmitted(true);
         // Reset form fields immediately

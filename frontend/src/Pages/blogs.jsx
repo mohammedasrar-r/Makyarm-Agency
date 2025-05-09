@@ -322,7 +322,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/user/getallblog');
+        const res = await axios.get('https://makyarmagenciespvt-backend.vercel.app/api/user/getallblog');
 
         setPosts(res.data);
       } catch (err) {

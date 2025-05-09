@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const handleMarkComplete = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:3000/api/user/submissions/${id}/status`, {
+      const res = await axios.patch(`https://makyarmagenciespvt-backend.vercel.app/api/user/submissions/${id}/status`, {
         status: 'Completed',
       });
   

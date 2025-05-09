@@ -17,7 +17,7 @@ const AddBlog = () => {
     setMessage('');
 
     try {
-      await axios.post('http://localhost:3000/api/user/addblog', form); // Replace with your API endpoint
+      await axios.post('https://makyarmagenciespvt-backend.vercel.app/api/user/addblog', form); // Replace with your API endpoint
       setMessage('Blog added successfully!');
       setForm({ title: '', content: '', imageUrl: '' });
     } catch (error) {

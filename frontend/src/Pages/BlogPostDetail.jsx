@@ -9,7 +9,7 @@ const BlogPostDetail = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/user/getblog/${id}`);
+        const res = await axios.get(`https://makyarmagenciespvt-backend.vercel.app/api/user/getblog/${id}`);
         setPost(res.data);
       } catch (err) {
         console.error('Failed to fetch blog post', err);
