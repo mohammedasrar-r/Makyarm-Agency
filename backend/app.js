@@ -21,7 +21,7 @@ const server = http.createServer(app);
 // Setup Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: "https://makyarm-agency-w5rf.vercel.app", // Frontend URL
+    origin: "https://makyarmagenciespvt.vercel.app", // Frontend URL
     credentials: true
   }
 });
